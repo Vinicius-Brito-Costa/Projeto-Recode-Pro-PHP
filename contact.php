@@ -3,14 +3,14 @@
 <header>
     <meta charset="UTF-8">
     <title>Full Stack Eletro</title>
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/contact.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/contact.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
 </header>
 
 <body>
-    <?php require("header.php") ?>
+    <?php require("pages/header.php") ?>
     <main>
         <div class="fundo">
             <div class="conteudo">
@@ -18,7 +18,7 @@
                 <div class="inputs">
                     <form class="formulario" action="">
                         <?php
-                        include("conexao.php");
+                        include("pages/conexao.php");
                         if (isset($_GET['mensagem'])) {
                             $usuario = $_GET['nome'];
                             $mensagem = $_GET['mensagem'];
@@ -37,11 +37,11 @@
                         <div class="botao"><button onclick="alert('Muito Obrigado!')" type="submit">Enviar</button></div>
                     </form>
                 </div>
-                <img class="imagem" src="../imagens/icones/iconCaneta.svg">
+                <img class="imagem" src="imagens/icones/iconCaneta.svg">
             </div>
         </div>
     </main>
-    <?php include("footer.php"); ?>
+    <?php include("pages/footer.php"); ?>
 </body>
 
 </html>

@@ -188,7 +188,7 @@
 
     .link-barra {
         padding: 5px 15px;
-        border-right: 4px solid white;
+        border-right: 0px solid white;
     }
 
     .link-barra:hover {

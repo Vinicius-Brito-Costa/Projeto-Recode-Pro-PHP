@@ -3,15 +3,15 @@
 <header>
     <meta charset="UTF-8mb4">
     <title>Full Stack Eletro</title>
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/product.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/product.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
-    <script src="../javascript/product-page.js" defer></script>
+    <script src="javascript/product-page.js" defer></script>
 </header>
 <?php
 header('Content-Type: text/html; charset=utf-8');
-include("conexao.php");
+include("pages/conexao.php");
 $id = $_GET['id_produto'];
 $sql = "select * from produtos where id_produto = $id";
 $query = $conexao->query($sql)->fetch_assoc();
@@ -25,11 +25,11 @@ $frete = 10;
 ?>
 
 <body>
-    <?php require("header.php") ?>
+    <?php require("pages/header.php") ?>
     <main>
         <div class="fundo">
             <div class="conteudo">
-                <div class="imagem-produto"><img src='../imagens/produtos/<?php echo $link_imagem ?>'></div>
+                <div class="imagem-produto"><img src='imagens/produtos/<?php echo $link_imagem ?>'></div>
                 <div class="infos">
                     <div class="textos">
                         <div class="nome-produto"><?php $nome ?></div>
@@ -85,7 +85,7 @@ $frete = 10;
             </div>
         </div>
     </main>
-    <?php include("footer.php"); ?>
+    <?php include("pages/footer.php"); ?>
 </body>
 
 </html>

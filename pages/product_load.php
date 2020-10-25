@@ -22,7 +22,7 @@ while ($row = $resultado->fetch_assoc()) {
 ?>
     <div class='box-produtos <?php echo $classe ?>' id='<?php echo $id ?>'>
         <form onclick="GoTo('product.php'), this.submit()" method="GET" action="product.php">
-            <img src="../imagens/produtos/<?php echo $endereco_imagem ?>">
+            <img src="imagens/produtos/<?php echo $endereco_imagem ?>">
             <div class="box-descricao">
                 <span class="preco-antigo"><?php echo $preco_antigo ?></span>
                 <span class="nome-produto"><?php echo $nome ?></span>

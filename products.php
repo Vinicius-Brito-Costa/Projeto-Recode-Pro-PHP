@@ -3,15 +3,15 @@
 <header>
     <meta charset="UTF-8">
     <title>Full Stack Eletro</title>
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/products.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/products.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../javascript/products-main.js" defer></script>
-    <script src="../javascript/products-navigation-bar.js" defer></script>
+    <script src="javascript/products-main.js" defer></script>
+    <script src="javascript/products-navigation-bar.js" defer></script>
 </header>
 
 <body>
-    <?php require("header.php") ?>
+    <?php require("pages/header.php") ?>
     <main>
         <section class="products-page">
             <section class="barra-produtos">
@@ -62,12 +62,12 @@
             </section>
             <section class="produtos">
                 <div class="container">
-                    <?php include("product_load.php")?>
+                    <?php include("pages/product_load.php")?>
                 </div>
             </section>
         </section>
     </main>
-    <?php include("footer.php"); ?>
+    <?php include("pages/footer.php"); ?>
 </body>
 
 </html>
