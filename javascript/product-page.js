@@ -2,11 +2,12 @@ let log = console.log;
 function CepCheck(cep)
 {
     log("função em desenvolvimento");
-    if(cep.length > 6){
-        document.getElementById('endereco').innerHTML = 'Rua Anhanhanha';
-        document.getElementById('numero').innerHTML = '777';
-        document.getElementById('estado').innerHTML = 'SP';
-        document.getElementById('cidade').innerHTML = 'Guarulhos';    
+    if(cep.length > 1){
+        document.getElementById('endereco').value = "Rua Anhanhanha";
+        document.getElementById('numero').value = "777";
+        document.getElementById('estado').value = "SP";
+        document.getElementById('cidade').value = "Guarulhos";
+        document.getElementById('telefone').value = 9999999999;    
     }
 }
 function PrecificarTotal(valor)

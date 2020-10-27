@@ -10,7 +10,6 @@
     <script src="javascript/product-page.js" defer></script>
 </header>
 <?php
-header('Content-Type: text/html; charset=utf-8');
 include("pages/conexao.php");
 $id = $_GET['id_produto'];
 $sql = "select * from produtos where id_produto = $id";
@@ -22,6 +21,20 @@ $preco_atual = $query['preco_atual'];
 $link_imagem = $query['nome_imagem'];
 $promo = ($query['promocao'] / 100);
 $frete = 10;
+
+if (isset($_POST['cep'])&&isset($_POST['quantidade'])) {
+    $usuario = "Usuario Padrão";
+    $endereco = $_POST['endereco'].", ".$_POST['numero'].", ".$_POST['cidade']." / ".$_POST['estado']." - ".$_POST['cep'];
+    $telefone = $_POST['telefone'];
+    $id_produto = $id;
+    $valor_unitario = $preco_atual;
+    $quantidade = $_POST['quantidade'];
+    $valor_total = ($valor_unitario * $quantidade) + $frete;
+    /* Passei quase uma hora e o erro era as aspas na definição dos campos abaixo */
+    $sql = "INSERT INTO pedidos (id_pedido, cliente, endereco, telefone, id_produto, valor_unitario, quantidade, valor_total) VALUES (null, '$usuario', '$endereco', '$telefone', '$id_produto', '$valor_unitario', '$quantidade', '$valor_total')";
+    mysqli_query($conexao, $sql);
+    mysqli_close($conexao);
+}
 ?>
 
 <body>
@@ -38,51 +51,57 @@ $frete = 10;
                     </div>
                 </div>
             </div>
-            <div class="compra">
-                <div class="endereco">
-                    <div class="cep">
-                        <label for="cep">CEP: </label>
-                        <input id="cep" class="endereco-itens" onkeydown="CepCheck(this.value)" type="number"><br>
+            <form class="caixa-de-compra" action="" method="POST">
+                <div class="compra">
+                    <div class="endereco">
+                        <div class="cep">
+                            <label for="cep">CEP: </label>
+                            <input id="cep" name="cep"class="endereco-itens" onkeydown="CepCheck(this.value)" type="number"><br>
+                        </div>
+                        <div class="rua">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco" class="endereco-itens" value="">
+                        </div>
+                        <div class="numero">
+                            <label for="numero">Numero:</label>
+                            <input type="text" id="numero" name="numero" class="endereco-itens" value="">
+                        </div>
+                        <div class="estado">
+                            <label for="estado">Estado:</label>
+                            <input type="text" id="estado" name="estado" class="endereco-itens" value="">
+                        </div>
+                        <div class="cidade">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" id="cidade" name="cidade" class="endereco-itens" value="">
+                        </div>
+                        <div class="telefone">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" id="telefone" name="telefone" class="endereco-itens" value="">
+                        </div>
                     </div>
-                    <div class="rua">
-                        <p>Endereço:</p>
-                        <div id="endereco" class="endereco-itens"></div>
+                    <div class="precos">
+                        <span>De </span>
+                        <div class='valor-antigo'>R$<?php echo $preco_antigo ?></div>
+                        <span>Por </span>
+                        <div class='valor-unidade'>R$<?php echo $preco_atual ?></div>
+                        <span>Economize R$<?php echo round($promo * $preco_antigo, 2) ?>!</span>
+                        <span>Frete: </span>
+                        <div class='valor-frete'>R$10,00</div>
+                        <div class='valor-parcelado'>6x R$<?php echo round($preco_atual / 6, 2) ?></div>
                     </div>
-                    <div class="numero">
-                        <p>Numero:</p>
-                        <div id="numero" class="endereco-itens"></div>
-                    </div>
-                    <div class="estado">
-                        <p>Estado:</p>
-                        <div id="estado" class="endereco-itens"></div>
-                    </div>
-                    <div class="cidade">
-                        <p>Cidade:</p>
-                        <div id="cidade" class="endereco-itens"></div>
-                    </div>
-                </div>
-                <div class="precos">
-                    <span>De </span>
-                    <div class='valor-antigo'>R$<?php echo $preco_antigo ?></div>
-                    <span>Por </span>
-                    <div class='valor-unidade'>R$<?php echo $preco_atual ?></div>
-                    <span>Economize R$<?php echo round($promo * $preco_antigo, 2) ?>!</span>
-                    <span>Frete: </span>
-                    <div class='valor-frete'>R$10,00</div>
-                    <div class='valor-parcelado'>6x R$<?php echo round($preco_atual / 6, 2) ?></div>
-                </div>
-                <form class="caixa-de-compra" action="" method="POST" onsubmit="return false">
+
                     <div class="quant">
                         <label for="quantidade">Quantidade: </label>
-                        <input id="quantidade" type="number" value="1" min="1" max="9" placeholder="" onkeyup="PrecificarTotal(<?php echo $preco_atual ?>)"><br>
+                        <input id="quantidade" name="quantidade" type="number" value="1" min="1" max="9" placeholder="" onkeyup="PrecificarTotal(<?php echo $preco_atual ?>)"><br>
                     </div>
                     <span>Total </span>
                     <div class='valor-total'>R$<?php echo $preco_atual ?></div>
                     <span>Frete não incluso.</span>
+                    <input type="hidden" name="id_produto" id="id_produto" value=<?php echo $id ?>>
                     <div class="botao"><button onclick="alert('Função em construção')">COMPRAR</button>
                     </div>
-                </form>
-            </div>
+            </form>
+        </div>
         </div>
     </main>
     <?php include("pages/footer.php"); ?>

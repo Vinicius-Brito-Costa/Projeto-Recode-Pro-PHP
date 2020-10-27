@@ -1,8 +1,8 @@
 <?php
 include("conexao.php");
 $sql = "select * from produtos";
-$resultado = $conexao->query($sql);
-while ($row = $resultado->fetch_assoc()) {
+$resultado = mysqli_query($conexao, $sql);
+while ($row = mysqli_fetch_assoc($resultado)) {
     $nome = $row['nome'];
     $preco_antigo = $row['preco_antigo'];
     $preco_atual = $row['preco_atual'];
@@ -35,5 +35,5 @@ while ($row = $resultado->fetch_assoc()) {
 <?php
 
 }
-
+    mysqli_close($conexao);
 ?>

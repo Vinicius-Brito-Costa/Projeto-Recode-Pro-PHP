@@ -34,9 +34,9 @@ values
 ('LG 27" LED IPS UltraHD 4K', 'monitores', 'res_4k','O monitor lg 27ul500 tem tela de 27" ips uhd 4k e entradas hdmi e display port. Tenha cores mais vibrantes e reais com o hdr10 e uma tela com mais de 1, 07 bilhão de cores em resolução 4k, ajuste de inclinação e onscreen control com screen split 2.0.', '2399.00', null, null, 'LG27LEDIPSUltraHD4K.jpg');
 create table if not exists pedidos(
 	id_pedido int auto_increment not null,
-    cliente varchar(30) not null,
-    endereco varchar(150) not null,
-    telefone varchar(14) not null,
+    cliente varchar(70) not null,
+    endereco varchar(300) not null,
+    telefone varchar(16) not null,
     id_produto int not null,
     valor_unitario int not null,
     quantidade int not null default '1',

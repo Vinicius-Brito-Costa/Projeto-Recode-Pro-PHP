@@ -27,6 +27,7 @@
                             $sql = "INSERT INTO feedback (id_mensagem, usuario, mensagem, email, dia) VALUES (null, '$usuario', '$mensagem', '$email', now())";
                             mysqli_query($conexao, $sql);
                             header("Location: contact.php");
+                            mysqli_close($conexao);
                         }
                         ?>
                         <div class="form-input">

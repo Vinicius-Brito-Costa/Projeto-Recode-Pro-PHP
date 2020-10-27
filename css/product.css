@@ -122,6 +122,7 @@ input[type=number] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.336);
 }
 .endereco{
+    color: white;
     text-align: left;
     display: inline-block;
     width: 100%;
@@ -137,7 +138,8 @@ input[type=number] {
     border: none;
     border-bottom: 2px solid rgba(255, 255, 255, 0.301);
 }
-.endereco-itens p{
+.endereco-itens input{
+    color: white;
     margin: 0 10px;
 }
 .precos {
