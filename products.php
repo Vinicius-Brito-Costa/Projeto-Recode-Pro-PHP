@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<header>
+<head>
     <meta charset="UTF-8">
     <title>Full Stack Eletro</title>
     <link href="css/style.css" rel="stylesheet">
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="javascript/products-main.js" defer></script>
     <script src="javascript/products-navigation-bar.js" defer></script>
-</header>
+</head>
 
 <body>
     <?php require("pages/header.php") ?>

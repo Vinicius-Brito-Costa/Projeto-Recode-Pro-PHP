@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<header>
+<head>
     <meta charset="UTF-8">
     <title>Full Stack Eletro</title>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/main-page.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquy/3.5.1/jquery.min.js" async></script>
 </header>
 
 <body>
